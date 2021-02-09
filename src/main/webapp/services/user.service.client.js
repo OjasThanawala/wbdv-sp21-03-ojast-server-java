@@ -38,8 +38,8 @@ function AdminUserServiceClient() {
             })
     }
 
-    function updateUser(userId) {
-        return fetch(`${self.user_urls}/${userId}`, {
+    function updateUser(userId, user) {
+        return fetch(`${self.user_url}/${userId}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

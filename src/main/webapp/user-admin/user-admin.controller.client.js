@@ -10,9 +10,8 @@
     var $updateBtn
     var $createBtn
     var $tbody
-    var $clearBtn
 
-    var users = [];
+    // var users = [];
 
 
     var userService = new AdminUserServiceClient();
@@ -22,13 +21,36 @@
         $passwordFld.val("");
         $firstNameFld.val("");
         $lastNameFld.val("");
-        // $roleFld.val("FACULTY")
+        $roleFld.val("FACULTY")
     }
 
-    function createUser(user) {
+    function createUser() {
+        var user = {
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            role: $roleFld.val()
+        }
+        console.log(user)
+
         userService.createUser(user)
             .then(function (actualUser) {
                 users.push(actualUser)
+                renderUsers(users)
+                clearInput()
+            })
+    }
+
+    function deleteUser(event) {
+        const delete_user = $(event.target);
+        const userIndex = delete_user.attr("id");
+        const userClass = delete_user.attr("class");
+        const userId = users[userIndex]._id;
+
+        userService.deleteUser(userId)
+            .then(function (status) {
+                users.splice(userIndex, 1)
                 renderUsers(users)
             })
     }
@@ -44,36 +66,22 @@
         $lastNameFld.val(selectedUser.lastName)
         $roleFld.val(selectedUser.role)
     }
-    
-    
-    function deleteUser(event) {
-        const delete_user = $(event.target);
-        const userIndex = delete_user.attr("id");
-        const userClass = delete_user.attr("class");
-        const userId = users[userIndex]._id;
 
-        userService.deleteUser(userId)
-            .then(function (status) {
-                users.splice(userIndex, 1)
-                renderUsers(users)
-            })
-    }
 
-    function selectUser(event) {
-        $usernameFld.val(selectedUser.username)
-        $passwordFld.val(selectedUser.password)
-        $firstNameFld.val(selectedUser.firstName)
-        $lastNameFld.val(selectedUser.lastName)
-        $roleFld.val(selectedUser.role)
+    function updateUser() {
+        selectedUser.username = $usernameFld.val()
+        selectedUser.password = $passwordFld.val()
+        selectedUser.firstName = $firstNameFld.val()
+        selectedUser.lastName = $lastNameFld.val()
+        selectedUser.role = $roleFld.val()
         userService.updateUser(selectedUser._id, selectedUser)
             .then(function (status) {
+                console.log(status)
                 var index = users.findIndex(user => user._id === selectedUser._id)
                 users[index] = selectedUser
                 renderUsers(users)
-
+                clearInput()
             })
-        clearInput()
-
     }
 
 
@@ -84,7 +92,8 @@
             $tbody.prepend(`
           <tr>
               <td>${user.username}</td>
-              <td>${user.password}</td>
+<!--              <td>${user.password}</td>-->
+              <td></td>
               <td>${user.firstName}</td>
               <td>${user.lastName}</td>
               <td>${user.role}</td>
@@ -106,33 +115,20 @@
     }
 
     function main() {
-        // rowTemplate = jQuery('.wbdv-template');
         $createBtn = $('.wbdv-create');
         $tbody = $(".wbdv-tbody")
         $updateBtn = $(".wbdv-update")
-        $clearBtn = $(".btn")
-        $usernameFld = $(".wbdv-usernameFld")
-        $passwordFld = $(".wbdv-passwordFld")
-        $firstNameFld = $(".wbdv-firstNameFld")
-        $lastNameFld = $(".wbdv-lastNameFld")
-        $roleFld = $(".wbdv-roleFld")
+        $usernameFld = $("#wbdv-usernameFld")
+        $passwordFld = $("#wbdv-passwordFld")
+        $firstNameFld = $("#wbdv-firstNameFld")
+        $lastNameFld = $("#wbdv-lastNameFld")
+        $roleFld = $("#wbdv-roleFld")
         $removeBtn = $(".wbdv-remove")
         $editBtn = $(".wbdv-edit")
 
-        $clearBtn.click(clearInput)
-        // $updateBtn.click(updateUser)
-        $createBtn.click(() => {
-            createUser({
-                username: $usernameFld.val(),
-                password: $passwordFld.val(),
-                firstName: $firstNameFld.val(),
-                lastName: $lastNameFld.val(),
-                role: $roleFld.val()
-            })
-            clearInput()
-        })
-        // $removeBtn.click(removeUser)
-        // $editBtn.click(editUser)
+
+        $updateBtn.click(updateUser)
+        $createBtn.click(createUser)
 
 
         userService.findAllUsers()
