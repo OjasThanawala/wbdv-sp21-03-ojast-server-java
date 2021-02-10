@@ -15,12 +15,12 @@
     <script src="../services/user.service.client.js"></script>
     <script src="user-admin.controller.client.js"></script>
 </head>
-<body>
+<body class="wbdv-body">
 
-<div class="container">
+<div class="container-fluid wbdv-padding">
     <h1>User Admin</h1>
 
-    <table class="table">
+    <table class="table table-striped table-hover">
         <thead>
         <tr>
             <th>Username</th>
@@ -31,7 +31,7 @@
             <th>&nbsp;</th>
         </tr>
 
-        <tr class="wbdv-form">
+        <tr class="wbdv-form wbdv-tr">
             <td><input id="wbdv-usernameFld" class="form-control"
                        placeholder="Username" /></td>
             <td><input id="wbdv-passwordFld" class="form-control"
@@ -49,13 +49,13 @@
                     class="float-right"
                     style="white-space: nowrap">
                 <button type="button" class="button">
-                    <i class="fa-2x fa fa-search wbdv-search"></i>
+                    <i class=" wbdv-search:hover fa-2x fa fa-search wbdv-search"></i>
                 </button>
                 <button type="button" class="button">
-                    <i class="fa-2x fa fa-plus wbdv-create"></i>
+                    <i class="wbdv-create:hover fa-2x fa fa-plus wbdv-create"></i>
                     </button>
                 <button type="button" class="button">
-                    <i class="fa-2x fa fa-check wbdv-update"></i>
+                    <i class="wbdv-update:hover fa-2x fa fa-check wbdv-update"></i>
                 </button>
                     </span></td>
         </tr>

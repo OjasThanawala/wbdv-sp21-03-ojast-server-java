@@ -1,3 +1,44 @@
 .wbdv-hidden {
     display: none;
 }
+
+.wbdv-padding{
+    padding: 10px;
+}
+
+.wbdv-body{
+    background-color: lightgray;
+}
+
+.table tr{
+    border:  black solid 1px;
+}
+
+.table th{
+    border:  black solid 1px;
+}
+
+.wbdv-search:hover {
+    cursor: pointer;
+    color: #4287f5;
+}
+
+.wbdv-create:hover {
+    cursor: pointer;
+    color: #4287f5;
+}
+
+.wbdv-update:hover {
+    cursor: pointer;
+    color: #4287f5;
+}
+
+.wbdv-remove:hover {
+    cursor: pointer;
+    color: #4287f5;
+}
+
+.wbdv-edit:hover {
+    cursor: pointer;
+    color: #4287f5;
+}

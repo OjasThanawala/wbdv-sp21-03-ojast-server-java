@@ -1,20 +1,19 @@
 (function () {
 
-    var $usernameFld
-    var $passwordFld
-    var $firstNameFld
-    var $lastNameFld
-    var $roleFld
-    var $removeBtn
-    var $editBtn
-    var $updateBtn
-    var $createBtn
-    var $tbody
+    let $usernameFld;
+    let $passwordFld;
+    let $firstNameFld;
+    let $lastNameFld;
+    let $roleFld;
+    let $removeBtn;
+    let $editBtn;
+    let $updateBtn;
+    let $createBtn;
+    let $tbody;
 
-    // var users = [];
+    // var users
 
-
-    var userService = new AdminUserServiceClient();
+    const userService = new AdminUserServiceClient();
 
     function clearInput() {
         $usernameFld.val("");
@@ -33,7 +32,6 @@
             role: $roleFld.val()
         }
         console.log(user)
-
         userService.createUser(user)
             .then(function (actualUser) {
                 users.push(actualUser)
@@ -47,9 +45,9 @@
         const userIndex = delete_user.attr("id");
         const userClass = delete_user.attr("class");
         const userId = users[userIndex]._id;
-
         userService.deleteUser(userId)
             .then(function (status) {
+                console.log(status)
                 users.splice(userIndex, 1)
                 renderUsers(users)
             })
@@ -99,8 +97,8 @@
               <td>${user.role}</td>
               <td>
                   <span class="float-right">
-                      <i id="${u}" class="fa-2x fa fa-times wbdv-remove"></i>
-                      <i id="${user._id}" class="fa-2x fa fa-pencil wbdv-edit"></i>                  
+                      <i id="${u}" class="wbdv-remove:hover fa-2x fa fa-times wbdv-remove"></i>
+                      <i id="${user._id}" class="wbdv-edit:hover fa-2x fa fa-pencil wbdv-edit"></i>                  
                 </span>
               </td>
           </tr>
@@ -114,6 +112,10 @@
 
     }
 
+    function findUserById(){
+    }
+
+
     function main() {
         $createBtn = $('.wbdv-create');
         $tbody = $(".wbdv-tbody")
@@ -126,10 +128,8 @@
         $removeBtn = $(".wbdv-remove")
         $editBtn = $(".wbdv-edit")
 
-
         $updateBtn.click(updateUser)
         $createBtn.click(createUser)
-
 
         userService.findAllUsers()
             .then(function (actualUsersServer) {

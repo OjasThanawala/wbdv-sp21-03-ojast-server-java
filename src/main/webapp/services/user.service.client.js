@@ -1,10 +1,11 @@
 function AdminUserServiceClient() {
 
     this.findAllUsers = findAllUsers;
+    this.findUserById = findUserById;
     this.createUser = createUser;
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
-    this.user_url = 'https://wbdv-generic-server.herokuapp.com/api/001857727/users';
+    this.user_url = 'https://wbdv-generic-server.herokuapp.com/api/001351475/users';
 
     var self = this;
 
@@ -21,6 +22,11 @@ function AdminUserServiceClient() {
             return response.json()
         })
     }
+
+    function findUserById() {
+        //optional
+    }
+
 
     // GET - Read
     function findAllUsers() {
