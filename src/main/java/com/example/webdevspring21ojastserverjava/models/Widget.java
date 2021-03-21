@@ -1,11 +1,55 @@
 package com.example.webdevspring21ojastserverjava.models;
 
 public class Widget {
+    private String name;
     private Long id;
-    private String topicIc;
+    private String topicId;
     private String type;
-    private Integer size;
+    private Integer widgetOrder;
     private String text;
+    private String url;
+    private Integer size;
+    private Integer width;
+    private Integer height;
+    private String cssClass;
+    private String style;
+    private String value;
+
+    public Widget() {
+    }
+
+    public Widget(Long id, String topicId, String type, Integer size, String text) {
+        this.id = id;
+        this.topicId = topicId;
+        this.type = type;
+        this.size = size;
+        this.text = text;
+    }
+
+    public Widget(String name, Long id, String topicId, String type, Integer widgetOrder, String text, String url,
+                  Integer size, Integer width, Integer height, String cssClass, String style, String value) {
+        this.name = name;
+        this.id = id;
+        this.topicId = topicId;
+        this.type = type;
+        this.widgetOrder = widgetOrder;
+        this.text = text;
+        this.url = url;
+        this.size = size;
+        this.width = width;
+        this.height = height;
+        this.cssClass = cssClass;
+        this.style = style;
+        this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -15,12 +59,12 @@ public class Widget {
         this.id = id;
     }
 
-    public String getTopicIc() {
-        return topicIc;
+    public String getTopicId() {
+        return topicId;
     }
 
-    public void setTopicIc(String topicIc) {
-        this.topicIc = topicIc;
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 
     public String getType() {
@@ -31,12 +75,12 @@ public class Widget {
         this.type = type;
     }
 
-    public Integer getSize() {
-        return size;
+    public Integer getWidgetOrder() {
+        return widgetOrder;
     }
 
-    public void setSize(Integer size) {
-        this.size = size;
+    public void setWidgetOrder(Integer widgetOrder) {
+        this.widgetOrder = widgetOrder;
     }
 
     public String getText() {
@@ -47,14 +91,59 @@ public class Widget {
         this.text = text;
     }
 
-    public Widget(Long id, String topicIc, String type, Integer size, String text) {
-        this.id = id;
-        this.topicIc = topicIc;
-        this.type = type;
-        this.size = size;
-        this.text = text;
+    public String getUrl() {
+        return url;
     }
 
-    public Widget() {
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public void setWidth(Integer width) {
+        this.width = width;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public String getCssClass() {
+        return cssClass;
+    }
+
+    public void setCssClass(String cssClass) {
+        this.cssClass = cssClass;
+    }
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }
