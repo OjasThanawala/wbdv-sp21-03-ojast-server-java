@@ -1,8 +1,17 @@
 package com.example.webdevspring21ojastserverjava.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="widgets")
 public class Widget {
-    private String name;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    private String name;
     private String topicId;
     private String type;
     private Integer widgetOrder;
@@ -14,6 +23,7 @@ public class Widget {
     private String cssClass;
     private String style;
     private String value;
+    private Boolean ordered;
 
     public Widget() {
     }
@@ -145,5 +155,13 @@ public class Widget {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Boolean getOrdered() {
+        return ordered;
+    }
+
+    public void setOrdered(Boolean ordered) {
+        this.ordered = ordered;
     }
 }
