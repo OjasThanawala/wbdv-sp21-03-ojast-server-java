@@ -37,7 +37,7 @@ public class Widget {
     }
 
     public Widget(String name, Long id, String topicId, String type, Integer widgetOrder, String text, String url,
-                  Integer size, Integer width, Integer height, String cssClass, String style, String value) {
+                  Integer size, Integer width, Integer height, String cssClass, String style, String value, Boolean ordered) {
         this.name = name;
         this.id = id;
         this.topicId = topicId;
@@ -51,6 +51,7 @@ public class Widget {
         this.cssClass = cssClass;
         this.style = style;
         this.value = value;
+        this.ordered = ordered;
     }
 
     public String getName() {
@@ -164,4 +165,9 @@ public class Widget {
     public void setOrdered(Boolean ordered) {
         this.ordered = ordered;
     }
+
+    public boolean isOrdered(){
+        return ordered;
+    }
+
 }

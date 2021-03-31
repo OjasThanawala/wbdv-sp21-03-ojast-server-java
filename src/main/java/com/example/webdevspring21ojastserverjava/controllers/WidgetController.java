@@ -34,6 +34,12 @@ public class WidgetController {
         return service.findWidgetsForTopic(topicId);
     }
 
+    @GetMapping("/api/widgets/{wid}")
+    public Widget findWidgetById(
+            @PathVariable("wid") Long id){
+        return service.findWidgetById(id);
+    }
+
     @DeleteMapping("/api/widgets/{wid}")
     public Integer deleteWidget(
             @PathVariable("wid") Long id) {
